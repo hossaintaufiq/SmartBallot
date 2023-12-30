@@ -18,20 +18,15 @@ import java.awt.event.ActionListener;
 
 public class AdDsh extends JFrame {
 
-     
     private String[] col = { "Name", "Start Date", "End Date", "Status" };
     private String[][] row = {
-    
-        {"Presidential Election","March 20, 2024", "March 21, 2024","Voted"},
+
+            { "Presidential Election", "March 20, 2024", "March 21, 2024", "Voted" },
             { "Parliamentary Election", "January 7, 2024", "January 8, 2024", "Voted" },
-            {"Class Captain Election", "January 1, 2024", "January 5, 2024", "Voted"}
-        
-    
-    
-    
-    
+            { "Class Captain Election", "January 1, 2024", "January 5, 2024", "Voted" }
+
     };
-    
+
     public AdDsh() {
 
         JFrame f1 = new JFrame("Admin Dashboard.");
@@ -92,15 +87,15 @@ public class AdDsh extends JFrame {
         ud6.setFont(new Font("Candara", Font.BOLD, 20));
         ud6.setBorderPainted(false);
         ud6.setBounds(51, 340, 150, 40);
-        
+
         ud6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    // Create an instance of GetSt class and dispose of the current JFrame
-                    new GetSt();
-                    dispose(); // Dispose of the current UsDsh JFrame
+                // Create an instance of GetSt class and dispose of the current JFrame
+                new GetSt();
+                dispose(); // Dispose of the current UsDsh JFrame
             }
-    });
+        });
 
         JButton ud14 = new JButton("User Feedback");
         ud14.setForeground(Color.BLACK);
@@ -150,13 +145,6 @@ public class AdDsh extends JFrame {
         ud11.setBorderPainted(false);
         ud11.setBounds(240, 555, 150, 40);
 
-        // JButton ud12 = new JButton("Back");
-        // ud12.setForeground(Color.WHITE);
-        // ud12.setBackground(Color.BLACK);
-        // ud12.setFont(new Font("Candara", Font.BOLD, 20));
-        // ud12.setBorderPainted(false);
-        // ud12.setBounds(800, 650, 150, 40);
-
         JTable jT = new JTable(row, col);
         JScrollPane sp1 = new JScrollPane(jT);
         sp1.setBounds(10, 220, 980, 180);
@@ -193,10 +181,6 @@ public class AdDsh extends JFrame {
 
         sp1.setBorder(null);
 
-        // Remove JScrollPane background
-        // sp1.setOpaque(false);
-        // sp1.getViewport().setOpaque(false);
-
         leftHalf.add(d1);
         leftHalf.add(ud1);
         leftHalf.add(ud2);
@@ -214,7 +198,6 @@ public class AdDsh extends JFrame {
         rightHalf.add(d4);
         rightHalf.add(ud11);
         rightHalf.add(d5);
-        // rightHalf.add(ud12);
 
         f1.add(leftHalf);
         f1.add(rightHalf);
