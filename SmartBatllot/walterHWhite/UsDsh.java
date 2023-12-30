@@ -75,6 +75,14 @@ public class UsDsh extends JFrame {
                 ud3.setFont(new Font("Candara", Font.BOLD, 20));
                 ud3.setBorderPainted(false);
                 ud3.setBounds(50, 170, 210, 40);
+                 ud3.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                // Create an instance of GetSt class and dispose of the current JFrame
+                                new HelpSupportPage();
+                                dispose(); // Dispose of the current UsDsh JFrame
+                        }
+                });
 
                 JButton ud4 = new JButton("Feedback");
                 ud4.setForeground(Color.BLACK);
