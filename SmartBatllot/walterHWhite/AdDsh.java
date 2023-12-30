@@ -103,6 +103,14 @@ public class AdDsh extends JFrame {
         ud14.setFont(new Font("Candara", Font.BOLD, 20));
         ud14.setBorderPainted(false);
         ud14.setBounds(56, 390, 200, 40);
+        ud14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    // Create an instance of GetSt class and dispose of the current JFrame
+                    new FeedbackDisplayPage();
+                    dispose(); // Dispose of the current UsDsh JFrame
+            }
+    });
 
         JLabel d2 = new JLabel("Declared Elections");
         d2.setBounds(10, 180, 230, 40);
