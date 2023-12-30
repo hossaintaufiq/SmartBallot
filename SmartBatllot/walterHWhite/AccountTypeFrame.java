@@ -27,10 +27,10 @@ public class AccountTypeFrame extends JFrame {
         add(label);
 
         JButton userButton = new JButton("User");
-        userButton.setForeground(Color.WHITE);
-        userButton.setBackground(Color.BLACK);
-        userButton.setFont(new Font("Candara", Font.BOLD, 20));
-        userButton.setBorderPainted(false);
+        // userButton.setForeground(Color.WHITE);
+        // userButton.setBackground(Color.BLACK);
+        userButton.setFont(new Font("Candara", Font.BOLD, 18));
+        // userButton.setBorderPainted(false);
         userButton.setBounds(500, 300, 150, 40);
         userButton.addActionListener(new ActionListener() {
             @Override
@@ -42,10 +42,10 @@ public class AccountTypeFrame extends JFrame {
         add(userButton);
 
         JButton adminButton = new JButton("Admin");
-        adminButton.setForeground(Color.WHITE);
-        adminButton.setBackground(Color.BLACK);
-        adminButton.setFont(new Font("Candara", Font.BOLD, 20));
-        adminButton.setBorderPainted(false);
+        // adminButton.setForeground(Color.WHITE);
+        // adminButton.setBackground(Color.BLACK);
+        adminButton.setFont(new Font("Candara", Font.BOLD, 18));
+        // adminButton.setBorderPainted(false);
         adminButton.setBounds(700, 300, 150, 40);
         adminButton.addActionListener(new ActionListener() {
             
