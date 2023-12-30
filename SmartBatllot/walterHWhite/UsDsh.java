@@ -90,6 +90,14 @@ public class UsDsh extends JFrame {
                 ud4.setFont(new Font("Candara", Font.BOLD, 20));
                 ud4.setBorderPainted(false);
                 ud4.setBounds(57, 210, 150, 40);
+                ud4.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                // Create an instance of GetSt class and dispose of the current JFrame
+                                new FeedbackPage();
+                                dispose(); // Dispose of the current UsDsh JFrame
+                        }
+                });
 
                 JButton ud5 = new JButton("My Profile");
                 ud5.setForeground(Color.BLACK);
