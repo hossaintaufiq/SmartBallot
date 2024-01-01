@@ -26,8 +26,8 @@ public class HelpSupportPage extends JFrame {
         titleLabel.setFont(new Font("Candara", Font.BOLD, 24));
         panel.add(titleLabel);
 
-        JLabel supportLabel = new JLabel("<html>Contact our support team for assistance.<br>Email: support@example.com<br>Phone: 123-456-7890</html>");
-        supportLabel.setBounds(50, 100, 700, 60);
+        JLabel supportLabel = new JLabel("<html>Contact our support team for assistance.<br>Software Developed by Hossain Ahmmed Taufiq<br>Email: hossainahmmedtaufiq22@gmail.com<br>Phone: 01773983904</html>");
+        supportLabel.setBounds(50, 100, 700, 150);
         supportLabel.setForeground(Color.BLACK);
         supportLabel.setFont(new Font("Candara", Font.PLAIN, 16));
         panel.add(supportLabel);

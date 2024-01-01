@@ -61,7 +61,7 @@ public class UserSU extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String enteredUsername = t1.getText();
                 String enteredPassword = new String(p1.getPassword());
-        
+
                 if (authenticateUser(enteredUsername, enteredPassword)) {
                     // JOptionPane.showMessageDialog(null);
                     dispose();
@@ -75,7 +75,7 @@ public class UserSU extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new UReg();
-                
+
             }
         });
 
@@ -87,7 +87,6 @@ public class UserSU extends JFrame {
         });
     }
 
-
     private boolean authenticateUser(String username, String password) {
         String filePath = "user_info.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -97,15 +96,18 @@ public class UserSU extends JFrame {
                 if (parts.length == 2) {
                     String storedUsername = parts[0].trim();
                     String storedPassword = parts[1].trim();
-    
+
+                    // System.out.println("pss"+storedPassword, storedUsername);
                     // Check if the entered credentials match admin credentials
                     if (username.equals("admin") && password.equals("admin")) {
-                         new AdDsh(); // Redirect to admin dashboard
+                        new AdDsh(); // Redirect to admin dashboard
                         return true;
                     }
-    
+
                     // Check if the entered credentials match stored credentials
                     if (username.equals(storedUsername) && password.equals(storedPassword)) {
+                        
+                        
                         new UsDsh(); // Redirect to user dashboard
                         return true;
                     }
@@ -123,4 +125,3 @@ public class UserSU extends JFrame {
         });
     }
 }
-

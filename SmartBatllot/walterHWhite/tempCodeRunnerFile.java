@@ -1,3 +1,5 @@
+
+package walterHWhite;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,9 +14,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FeedbackPage extends JFrame {
+public class tempCodeRunnerFile extends JFrame {
 
-    public FeedbackPage() {
+    public tempCodeRunnerFile() {
         setTitle("Feedback Page");
         setSize(600, 400);
         setLocationRelativeTo(null);
