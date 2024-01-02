@@ -233,6 +233,10 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -265,6 +269,33 @@ public class AdDsh extends JFrame {
         d1.setBounds(78, 30, 250, 40);
         d1.setForeground(Color.BLACK); // Set font color
         d1.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 28)); // Set font size
+
+        // new code 
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        JMenu fileMenu = new JMenu("File");
+        menuBar.add(fileMenu);
+
+        JMenuItem addElectionMenuItem = new JMenuItem("Add Election");
+        addElectionMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = JOptionPane.showInputDialog(null, "Enter Election Name:");
+                String startDate = JOptionPane.showInputDialog(null, "Enter Start Date:");
+                String endDate = JOptionPane.showInputDialog(null, "Enter End Date:");
+
+                saveElectionToFile(name, startDate, endDate);
+            }
+        });
+        fileMenu.add(addElectionMenuItem);
+
+
+        JPanel leftHalf = new JPanel();
+        leftHalf.setBounds(0, 0, 350, 768);
+        leftHalf.setBackground(Color.ORANGE);
+        leftHalf.setLayout(null);
+
 
         JPanel leftHalf = new JPanel();
         leftHalf.setBounds(0, 0, 350, 768); // Adjust the bounds as needed
@@ -341,6 +372,38 @@ public class AdDsh extends JFrame {
                     dispose(); // Dispose of the current UsDsh JFrame
             }
     });
+
+
+    // new code starts 
+    // JMenuItem addElectionMenuItem = new JMenuItem("Add Election");
+    //     addElectionMenuItem.addActionListener(new ActionListener() {
+    //         @Override
+    //         public void actionPerformed(ActionEvent e) {
+    //             // Open a dialog to input election details
+    //             String name = JOptionPane.showInputDialog(null, "Enter Election Name:");
+    //             String startDate = JOptionPane.showInputDialog(null, "Enter Start Date:");
+    //             String endDate = JOptionPane.showInputDialog(null, "Enter End Date:");
+
+    //             // Save election details to a file
+    //             saveElectionToFile(name, startDate, endDate);
+    //         }
+    //     });
+    //     fileMenu.add(addElectionMenuItem);
+
+
+
+    //     private void saveElectionToFile(String name, String startDate, String endDate) {
+    //         try (BufferedWriter writer = new BufferedWriter(new FileWriter("elections.txt", true))) {
+    //             writer.write("Name: " + name + "\tStart Date: " + startDate + "\tEnd Date: " + endDate);
+    //             writer.newLine();
+    //             writer.flush();
+    //             System.out.println("Election details saved to file.");
+    //         } catch (IOException ex) {
+    //             System.err.println("Error saving election details: " + ex.getMessage());
+    //         }
+    //     }
+    // new ocde ends
+
 
         JLabel d2 = new JLabel("Declared Elections");
         d2.setBounds(10, 180, 230, 40);
