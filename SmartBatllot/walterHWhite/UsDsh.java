@@ -105,6 +105,14 @@ public class UsDsh extends JFrame {
                 ud5.setFont(new Font("Candara", Font.BOLD, 20));
                 ud5.setBorderPainted(false);
                 ud5.setBounds(62, 300, 150, 40);
+                 ud5.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                // Create an instance of GetSt class and dispose of the current JFrame
+                                new ProfileDashboard();
+                                dispose(); // Dispose of the current UsDsh JFrame
+                        }
+                });
 
                 JButton ud6 = new JButton("LogOut");
                 ud6.setForeground(Color.BLACK);
