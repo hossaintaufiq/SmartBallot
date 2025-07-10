@@ -1,3 +1,6 @@
+// Add the following dependency to your project if you don't have org.json:
+// Download from: https://mvnrepository.com/artifact/org.json/json
+// Or add to your build path: json-20210307.jar (or similar)
 package walterHWhite;
 
 import javax.swing.*;
@@ -8,13 +11,18 @@ import java.awt.geom.Ellipse2D;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ProfileDashboard extends JFrame {
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private int age;
+    private String firstName = "N/A";
+    private String lastName = "N/A";
+    private String email = "N/A";
+    private int age = 0;
+    private String profilePicPath = "SmartBatllot/pictures/Profile pic.jpg";
 
     public ProfileDashboard() {
         setTitle("Profile Dashboard");
@@ -22,24 +30,31 @@ public class ProfileDashboard extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Read user information from the file
-        readUserInfoFromFile("user_info.txt");
+        // Read user information from the JSON file (last user for now)
+        readUserInfoFromJson("users.json");
 
-        JPanel profilePanel = new JPanel();
+        JPanel profilePanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setColor(new Color(245, 245, 245));
+                g2.fillRoundRect(30, 30, 350, 350, 40, 40);
+            }
+        };
         profilePanel.setLayout(null);
-        profilePanel.setBackground(Color.WHITE);
+        profilePanel.setBackground(new Color(230, 230, 250));
 
         JLabel profilePicLabel = new JLabel("User Profile");
-        profilePicLabel.setForeground(Color.BLACK);
-        profilePicLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        profilePicLabel.setBounds(60, 45, 120, 30);
+        profilePicLabel.setForeground(new Color(44, 62, 80));
+        profilePicLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        profilePicLabel.setBounds(60, 45, 200, 30);
 
-        // Load the profile picture from the file
-        String imagePath = "D:\\Project(Software)\\SmartBatllot\\SmartBatllot\\pictures/Profile pic.jpg";
-        ImageIcon imageIcon = new ImageIcon(imagePath);
+        // Load the profile picture from the file (relative path)
+        ImageIcon imageIcon = new ImageIcon(profilePicPath);
         Image image = imageIcon.getImage();
 
-        // Creating a circular profile picture
+        // Creating a circular profile picture with border
         JLabel profilePicture = new JLabel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -48,36 +63,41 @@ public class ProfileDashboard extends JFrame {
                 Ellipse2D.Double circle = new Ellipse2D.Double(0, 0, diameter, diameter);
                 g2.setClip(circle);
                 g2.drawImage(image, 0, 0, diameter, diameter, null);
+                g2.setClip(null);
+                g2.setStroke(new BasicStroke(4f));
+                g2.setColor(new Color(52, 152, 219));
+                g2.drawOval(0, 0, diameter, diameter);
                 g2.dispose();
             }
         };
         profilePicture.setBounds(50, 80, 120, 120);
 
-        String fullName = firstName + " " + lastName; // Combine first name and last name
-        JLabel nameLabel = new JLabel(fullName); // Display full name obtained from the file
-        nameLabel.setForeground(Color.BLACK);
-        nameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        String fullName = firstName + " " + lastName;
+        JLabel nameLabel = new JLabel(fullName);
+        nameLabel.setForeground(new Color(44, 62, 80));
+        nameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 22));
         nameLabel.setBounds(50, 210, 300, 30);
 
-        JLabel emailLabel = new JLabel("Email: " + email); // Display email obtained from the file
-        emailLabel.setForeground(Color.BLACK);
-        emailLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        JLabel emailLabel = new JLabel("Email: " + email);
+        emailLabel.setForeground(new Color(44, 62, 80));
+        emailLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         emailLabel.setBounds(50, 250, 300, 30);
 
-        JLabel ageLabel = new JLabel("Age: " + age); // Display age obtained from the file
-        ageLabel.setForeground(Color.BLACK);
-        ageLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        JLabel ageLabel = new JLabel("Age: " + (age > 0 ? age : "N/A"));
+        ageLabel.setForeground(new Color(44, 62, 80));
+        ageLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         ageLabel.setBounds(50, 290, 150, 30);
 
-        // Creating the back button
         JButton backButton = new JButton("Back");
         backButton.setBounds(850, 500, 100, 30);
+        backButton.setBackground(new Color(52, 152, 219));
+        backButton.setForeground(Color.WHITE);
+        backButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        backButton.setFocusPainted(false);
+        backButton.setBorder(BorderFactory.createLineBorder(new Color(41, 128, 185), 2));
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Perform action to go back to the previous page here
-                // For example, you could close this window
-                dispose(); // Close the profile dashboard window
-                // Add code here to navigate back to the previous page
+                dispose();
             }
         });
 
@@ -92,23 +112,20 @@ public class ProfileDashboard extends JFrame {
         setVisible(true);
     }
 
-    // Method to read user information from the file
-    private void readUserInfoFromFile(String filePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.startsWith("First Name:")) {
-                    firstName = line.substring(11).trim();
-                } else if (line.startsWith("Last Name:")) {
-                    lastName = line.substring(10).trim();
-                } else if (line.startsWith("Email:")) {
-                    email = line.substring(7).trim();
-                } else if (line.startsWith("Age:")) {
-                    age = Integer.parseInt(line.substring(5).trim());
-                }
+    // Method to read user information from the JSON file (last user for now)
+    private void readUserInfoFromJson(String filePath) {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+            JSONArray users = new JSONArray(content);
+            if (users.length() > 0) {
+                JSONObject user = users.getJSONObject(users.length() - 1); // Last registered user
+                firstName = user.optString("firstName", "N/A");
+                lastName = user.optString("lastName", "N/A");
+                email = user.optString("email", "N/A");
+                age = user.optInt("age", 0);
             }
-        } catch (IOException | NumberFormatException e) {
-            e.printStackTrace(); // Handle exceptions properly in your application
+        } catch (Exception e) {
+            // If file missing or invalid, use defaults
         }
     }
 

@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.JTableHeader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 
 public class UsDsh extends JFrame {
 
@@ -33,30 +34,30 @@ public class UsDsh extends JFrame {
 
                 JLabel d1 = new JLabel(" Smart - Ballot ");
                 d1.setBounds(78, 30, 250, 40);
-                d1.setForeground(Color.BLACK); // Set font color
-                d1.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 28)); // Set font size
+                d1.setForeground(new Color(44, 62, 80)); // Set font color
+                d1.setFont(new Font("Segoe UI", Font.BOLD, 28)); // Set font size
 
                 JPanel leftHalf = new JPanel();
                 leftHalf.setBounds(0, 0, 350, 768); // Adjust the bounds as needed
-                leftHalf.setBackground(Color.ORANGE);
+                leftHalf.setBackground(new Color(52, 152, 219));
                 leftHalf.setLayout(null);
 
                 JPanel rightHalf = new JPanel();
                 rightHalf.setBounds(351, 0, 1016, 768); // Adjust the bounds as needed
-                rightHalf.setBackground(Color.WHITE);
+                rightHalf.setBackground(new Color(236, 240, 241));
                 rightHalf.setLayout(null);
 
                 JButton ud1 = new JButton("Election Info");
-                ud1.setForeground(Color.BLACK);
-                ud1.setBackground(Color.ORANGE);
-                ud1.setFont(new Font("Candara", Font.BOLD, 20));
+                ud1.setForeground(Color.WHITE);
+                ud1.setBackground(new Color(41, 128, 185));
+                ud1.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud1.setBorderPainted(false);
                 ud1.setBounds(67, 90, 150, 40);
 
                 JButton ud2 = new JButton("Notice & Updates");
-                ud2.setForeground(Color.BLACK);
-                ud2.setBackground(Color.ORANGE);
-                ud2.setFont(new Font("Candara", Font.BOLD, 20));
+                ud2.setForeground(Color.WHITE);
+                ud2.setBackground(new Color(41, 128, 185));
+                ud2.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud2.setBorderPainted(false);
                 ud2.setBounds(58, 130, 210, 40);
                  ud2.addActionListener(new ActionListener() {
@@ -70,9 +71,9 @@ public class UsDsh extends JFrame {
 
 
                 JButton ud3 = new JButton("Help & Support");
-                ud3.setForeground(Color.BLACK);
-                ud3.setBackground(Color.ORANGE);
-                ud3.setFont(new Font("Candara", Font.BOLD, 20));
+                ud3.setForeground(Color.WHITE);
+                ud3.setBackground(new Color(41, 128, 185));
+                ud3.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud3.setBorderPainted(false);
                 ud3.setBounds(50, 170, 210, 40);
                  ud3.addActionListener(new ActionListener() {
@@ -85,9 +86,9 @@ public class UsDsh extends JFrame {
                 });
 
                 JButton ud4 = new JButton("Feedback");
-                ud4.setForeground(Color.BLACK);
-                ud4.setBackground(Color.ORANGE);
-                ud4.setFont(new Font("Candara", Font.BOLD, 20));
+                ud4.setForeground(Color.WHITE);
+                ud4.setBackground(new Color(41, 128, 185));
+                ud4.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud4.setBorderPainted(false);
                 ud4.setBounds(57, 210, 150, 40);
                 ud4.addActionListener(new ActionListener() {
@@ -100,9 +101,9 @@ public class UsDsh extends JFrame {
                 });
 
                 JButton ud5 = new JButton("My Profile");
-                ud5.setForeground(Color.BLACK);
-                ud5.setBackground(Color.ORANGE);
-                ud5.setFont(new Font("Candara", Font.BOLD, 20));
+                ud5.setForeground(Color.WHITE);
+                ud5.setBackground(new Color(41, 128, 185));
+                ud5.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud5.setBorderPainted(false);
                 ud5.setBounds(62, 300, 150, 40);
                  ud5.addActionListener(new ActionListener() {
@@ -115,9 +116,9 @@ public class UsDsh extends JFrame {
                 });
 
                 JButton ud6 = new JButton("LogOut");
-                ud6.setForeground(Color.BLACK);
-                ud6.setBackground(Color.ORANGE);
-                ud6.setFont(new Font("Candara", Font.BOLD, 20));
+                ud6.setForeground(Color.WHITE);
+                ud6.setBackground(new Color(41, 128, 185));
+                ud6.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud6.setBorderPainted(false);
                 ud6.setBounds(51, 340, 150, 40);
     
@@ -132,42 +133,42 @@ public class UsDsh extends JFrame {
 
                 JLabel d2 = new JLabel("Running Elections");
                 d2.setBounds(10, 180, 230, 40);
-                d2.setForeground(Color.BLACK); // Set font color
-                d2.setFont(new Font("Candara", Font.BOLD, 22));
+                d2.setForeground(new Color(44, 62, 80)); // Set font color
+                d2.setFont(new Font("Segoe UI", Font.BOLD, 22));
 
                 JLabel d3 = new JLabel("Presidential Election");
                 d3.setBounds(10, 435, 230, 40);
-                d3.setForeground(Color.BLACK); // Set font color
-                d3.setFont(new Font("Candara", Font.BOLD, 22));
+                d3.setForeground(new Color(44, 62, 80)); // Set font color
+                d3.setFont(new Font("Segoe UI", Font.BOLD, 22));
 
                 JButton ud9 = new JButton("Go for Vote");
-                ud9.setForeground(Color.BLACK);
-                ud9.setBackground(Color.ORANGE);
-                ud9.setFont(new Font("Candara", Font.BOLD, 20));
+                ud9.setForeground(Color.WHITE);
+                ud9.setBackground(new Color(41, 128, 185));
+                ud9.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud9.setBorderPainted(false);
                 ud9.setBounds(240, 435, 150, 40);
 
                 JLabel d4 = new JLabel("Parliamentary Election");
                 d4.setBounds(10, 495, 230, 40);
-                d4.setForeground(Color.BLACK); // Set font color
-                d4.setFont(new Font("Candara", Font.BOLD, 22));
+                d4.setForeground(new Color(44, 62, 80)); // Set font color
+                d4.setFont(new Font("Segoe UI", Font.BOLD, 22));
 
                 JButton ud10 = new JButton("Go for Vote");
-                ud10.setForeground(Color.BLACK);
-                ud10.setBackground(Color.ORANGE);
-                ud10.setFont(new Font("Candara", Font.BOLD, 20));
+                ud10.setForeground(Color.WHITE);
+                ud10.setBackground(new Color(41, 128, 185));
+                ud10.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud10.setBorderPainted(false);
                 ud10.setBounds(240, 495, 150, 40);
 
                 JLabel d5 = new JLabel("Class Captain Election");
                 d5.setBounds(10, 555, 230, 40);
-                d5.setForeground(Color.BLACK); // Set font color
-                d5.setFont(new Font("Candara", Font.BOLD, 22));
+                d5.setForeground(new Color(44, 62, 80)); // Set font color
+                d5.setFont(new Font("Segoe UI", Font.BOLD, 22));
 
                 JButton ud11 = new JButton("Go for Vote");
-                ud11.setForeground(Color.BLACK);
-                ud11.setBackground(Color.ORANGE);
-                ud11.setFont(new Font("Candara", Font.BOLD, 20));
+                ud11.setForeground(Color.WHITE);
+                ud11.setBackground(new Color(41, 128, 185));
+                ud11.setFont(new Font("Segoe UI", Font.BOLD, 18));
                 ud11.setBorderPainted(false);
                 ud11.setBounds(240, 555, 150, 40);
 

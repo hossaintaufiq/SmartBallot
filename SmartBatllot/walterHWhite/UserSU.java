@@ -8,7 +8,14 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+// Add the following dependency to your project if you don't have org.json:
+// Download from: https://mvnrepository.com/artifact/org.json/json
+// Or add to your build path: json-20210307.jar (or similar)
 public class UserSU extends JFrame {
 
     private JTextField t1;
@@ -88,32 +95,23 @@ public class UserSU extends JFrame {
     }
 
     private boolean authenticateUser(String username, String password) {
-        String filePath = "user_info.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String storedUsername = parts[0].trim();
-                    String storedPassword = parts[1].trim();
-
-                    // System.out.println("pss"+storedPassword, storedUsername);
-                    // Check if the entered credentials match admin credentials
-                    if (username.equals("admin") && password.equals("admin")) {
-                        new AdDsh(); // Redirect to admin dashboard
-                        return true;
-                    }
-
-                    // Check if the entered credentials match stored credentials
-                    if (username.equals(storedUsername) && password.equals(storedPassword)) {
-                        
-                        
-                        new UsDsh(); // Redirect to user dashboard
-                        return true;
-                    }
+        // Admin login (hardcoded)
+        if (username.equals("admin") && password.equals("admin")) {
+            new AdDsh(); // Redirect to admin dashboard
+            return true;
+        }
+        // User login (from users.json)
+        try {
+            String content = new String(Files.readAllBytes(Paths.get("users.json")));
+            JSONArray users = new JSONArray(content);
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject user = users.getJSONObject(i);
+                if (user.getString("username").equals(username) && user.getString("password").equals(password)) {
+                    new UsDsh(); // Redirect to user dashboard
+                    return true;
                 }
             }
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return false;
